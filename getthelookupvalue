@@ -1,0 +1,17 @@
+var systemuserref = service.Retrieve(entity.LogicalName, entity.Id, new ColumnSet("new_pendingat"));
+                            if (systemuserref.Contains("new_pendingat"))
+
+                            {
+                             //retrieving a lookup value from incident 
+                                var ownerstatus = (EntityReference)systemuserref.Attributes["new_pendingat"];
+                                Entity ownerdetails = service.Retrieve(ownerstatus.LogicalName, ownerstatus.Id,new ColumnSet("fullname"));
+                                if (ownerdetails.Contains("fullname"))
+                                {
+                                    var username = (string)ownerdetails.Attributes["fullname"];
+                                    if (username == "CEM .") {
+                                        Entity pendingstatus = new Entity(entity.LogicalName, entity.Id);
+                                        pendingstatus.Attributes["new_pendingat"] = null;
+                                        service.Update(pendingstatus);
+                                    }
+                                }
+
