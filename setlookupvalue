@@ -1,0 +1,5 @@
+ Entity pendingstatus = new Entity(entity.LogicalName, entity.Id);
+                                        pendingstatus.Attributes["new_pendingat"] = null;
+
+                                        pendingstatus.Attributes["statuscode"] = new OptionSetValue(100000003);
+                                        service.Update(pendingstatus);
