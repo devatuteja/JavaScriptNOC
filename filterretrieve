@@ -1,0 +1,11 @@
+//how to retrieve the value from the related entity
+"""whenever we want to retrieve something on the basis of range/filter. """  
+
+
+
+ QueryByAttribute querybyexpression = new QueryByAttribute("new_joborder");
+ querybyexpression.AddAttributeValue("new_relatedcaseid",entity.Id);
+ EntityCollection ec = service.RetrieveMultiple(querybyexpression);
+                                            
+
+//retreiving value from the related entity 
