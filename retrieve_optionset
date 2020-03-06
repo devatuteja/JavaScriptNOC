@@ -1,0 +1,3 @@
+ Entity statusvalue = service.Retrieve(entity.LogicalName, entity.Id, new ColumnSet("statuscode"));
+ var statusvaluedetails = (OptionSetValue)statusvalue.Attributes["statuscode"];
+  int value_of_status = statusvaluedetails.Value;
