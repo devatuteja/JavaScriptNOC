@@ -1,0 +1,12 @@
+ var status_info = service.Retrieve(entity.LogicalName, entity.Id, new ColumnSet("statuscode"));
+var statusvalue = (OptionSetValue)status_info.Attributes["statuscode"];
+int status_num_ref = statusvalue.Value;
+//retrieving the option set for in progress status_num_ref should be 1
+//getting the pending_at value
+ var currentcaseref = service.Retrieve(entity.LogicalName, entity.Id, new ColumnSet("new_pendingat"));
+ EntityReference ownerdetails = new EntityReference();
+ if (currentcaseref.Contains("new_pendingat"))
+ {
+  ownerdetails = (EntityReference)currentcaseref.Attributes["new_pendingat"];
+ }
+ if ((currentcaseref.Contains("new_pendingat") == false || ownerdetails.Id == Guid.Empty) && status_num_ref == 1)
